@@ -31,6 +31,10 @@ const UserSchema = mongoose.Schema({
         type: Boolean,
         default: true,
     },
+    shopping: {
+        type: Boolean,
+        default: false,
+    }, 
     google: {
         type: Boolean,
         default: true,

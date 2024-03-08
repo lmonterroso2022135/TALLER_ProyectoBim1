@@ -19,8 +19,8 @@ export const usersGet = async (req = request, res = response) => {
 
 // Agregar un usuario
 export const userPost = async (req, res) => {
-    const { name, email, password, role } = req.body;
-    const user = new User({ name, email, password, role });
+    const { name, email, phone, address, password, role } = req.body;
+    const user = new User({ name, email, phone, address, password, role });
 
     const salt = bcryptjs.genSaltSync();
     user.password = bcryptjs.hashSync( password, salt );
@@ -33,8 +33,8 @@ export const userPost = async (req, res) => {
 }
 // Registrar usuario default
 export const register = async (req, res) => {
-    const { name, email, password} = req.body;
-    const user = new User({ name, email, password, role: 'CLIENT'});
+    const { name, email, phone, address, password} = req.body;
+    const user = new User({ name, email, phone, address, password, role: 'CLIENT'});
 
     const salt = bcryptjs.genSaltSync();
     user.password = bcryptjs.hashSync( password, salt );

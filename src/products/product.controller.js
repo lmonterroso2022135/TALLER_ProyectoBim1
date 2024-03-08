@@ -4,7 +4,7 @@ import Category from "../categories/category.model.js"
 
 /////////////////////////////////////////////////////////////////////////
 export const productPost = async (req, res) => {
-    const {productName, description, stock, category} = req.body;
+    const {productName, description, price, stock, category} = req.body;
     const cate = await Category.findOne({categoryName: category});
 
     if(!cate){
@@ -14,7 +14,7 @@ export const productPost = async (req, res) => {
         return res.status(404).json({ msg: 'Category was removed.' });
     };
 
-    const product = new Product({productName, description, stock, category: cate._id});
+    const product = new Product({productName, description, price, stock, category: cate._id});
     await product.save();
 
     res.status(200).json({
