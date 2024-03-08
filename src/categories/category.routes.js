@@ -3,13 +3,13 @@ import { check } from "express-validator";
 import {
     categoriesGet,
     categoryPost,
-    categoryDelete,
-    categoryPut
+    categoryPut,
+    categoryDelete
     } from "./category.controller.js"
-import { validarJWT } from "../middlewares/validar-jwt.js";
-import { validarCampos } from "../middlewares/validar-campos.js";
 import { isAdmin } from "../middlewares/validate-roles.js";
 import { categoryExists } from "../helpers/db-validators.js";
+import { validateCampos } from "../middlewares/validate-campos.js";
+import { validateJWT } from "../middlewares/validate-jwt.js";
 
     const router = Router();
 
@@ -17,19 +17,19 @@ import { categoryExists } from "../helpers/db-validators.js";
     
     router.post(
         "/", [
-            validarJWT,
-            isAdmin,
+            // validateJWT,
+            // isAdmin,
             check("categoryName", "The username is required").not().isEmpty(),
             check("categoryName").custom(categoryExists),
             check("description", "The username is required").not().isEmpty(),
-            validarCampos
+            validateCampos
         ],categoryPost
     );
 
     router.put(
         "/:id",
         [
-            validarJWT,
+            validateJWT,
             isAdmin,
             check("categoryName", "The username is required").not().isEmpty(),
             check("categoryName").custom(categoryExists),
@@ -37,12 +37,11 @@ import { categoryExists } from "../helpers/db-validators.js";
         ],categoryPut
     );
 
-    router.delete(
-        "/:id",
-        validarJWT,
-        isAdmin,
-        categoryDelete
-    );
 
-    
+    router.delete(
+        "/",
+        [
+            check("categoryName", "Category to remove is required").not().isEmpty()
+        ], categoryDelete
+    )
 export default router;
