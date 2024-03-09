@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "productShopCollection",
-    "dateExported": "2024-03-09T06:01:53.568Z",
+    "dateExported": "2024-03-10T00:01:51.479Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,12 +14,17 @@
             "method": "POST",
             "sortNum": 10000,
             "created": "2024-03-08T07:47:33.353Z",
-            "modified": "2024-03-09T04:02:00.213Z",
-            "headers": [],
+            "modified": "2024-03-09T23:48:25.718Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViZGUzOTIzOGY5NDRhMjRjYzg2OTYiLCJpYXQiOjE3MTAwMjc5NTYsImV4cCI6MTcxMDAzMTU1Nn0.5g-XyfpxbQoIP6GNfH8YM7UPYPWpGXiJo09eNVMnmU0"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"productName\": \"Cornflakes\",\n  \"description\": \"Lata de 100g de atun\",\n  \"price\": 15.50,\n  \"stock\": 100,\n  \"category\": \"Cereales\"\n}",
+                "raw": "{\n  \"productName\": \"Limpia vidrios\",\n  \"description\": \"Lata de 100g de atun\",\n  \"price\": 15.50,\n  \"stock\": 100,\n  \"category\": \"Limpieza\"\n}",
                 "form": []
             },
             "reqType": "post",
@@ -48,12 +53,17 @@
             "method": "PUT",
             "sortNum": 30000,
             "created": "2024-03-08T08:22:22.223Z",
-            "modified": "2024-03-09T04:02:45.684Z",
-            "headers": [],
+            "modified": "2024-03-09T23:51:04.489Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViZGUzOTIzOGY5NDRhMjRjYzg2OTYiLCJpYXQiOjE3MTAwMjc5NTYsImV4cCI6MTcxMDAzMTU1Nn0.5g-XyfpxbQoIP6GNfH8YM7UPYPWpGXiJo09eNVMnmU0"
+                }
+            ],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"productName\": \"Duraznos\",\n\n  \"category\": \"Lacteos\",\n  \"description\": \"AAAAAAAAAAAAAAAAAAAA\"\n}",
+                "raw": "{\n  \"productName\": \"Limpia vidios\",\n\n  \"category\": \"Limpieza\",\n  \"stock\": 5\n}",
                 "form": []
             },
             "reqType": "put",
@@ -68,15 +78,95 @@
             "method": "DELETE",
             "sortNum": 40000,
             "created": "2024-03-08T08:26:35.779Z",
-            "modified": "2024-03-08T08:46:13.374Z",
+            "modified": "2024-03-09T23:51:33.829Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViZGUzOTIzOGY5NDRhMjRjYzg2OTYiLCJpYXQiOjE3MTAwMjc5NTYsImV4cCI6MTcxMDAzMTU1Nn0.5g-XyfpxbQoIP6GNfH8YM7UPYPWpGXiJo09eNVMnmU0"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productName\": \"Duraznos\"\n}",
+                "form": []
+            },
+            "reqType": "del",
+            "tests": []
+        },
+        {
+            "_id": "8c1ce4af-fd6c-4ac5-bb53-61d071ba2452",
+            "colId": "58da609d-27ac-447a-b145-41895c932aaf",
+            "containerId": "",
+            "name": "serchProduct",
+            "url": "http://localhost:3000/onlineShop/v1/products/serch",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-03-09T19:35:00.681Z",
+            "modified": "2024-03-09T23:53:44.104Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"productName\": \"Lata de esparragos\"\n}",
+                "raw": "{\n  \"productName\": \"Limpia vidrios\"\n}",
                 "form": []
             },
-            "reqType": "del",
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "502e962d-ebf5-4f25-9517-da6fc4609a88",
+            "colId": "58da609d-27ac-447a-b145-41895c932aaf",
+            "containerId": "",
+            "name": "productForCategory",
+            "url": "http://localhost:3000/onlineShop/v1/products/category",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-03-09T19:35:18.041Z",
+            "modified": "2024-03-09T23:52:48.805Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"categoryName\": \"Limpieza\"\n}",
+                "form": []
+            },
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "72e76442-7d3c-46c5-b5ef-ca4bc2835d78",
+            "colId": "58da609d-27ac-447a-b145-41895c932aaf",
+            "containerId": "",
+            "name": "soldOut",
+            "url": "http://localhost:3000/onlineShop/v1/products/soldOut",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-03-09T19:38:20.880Z",
+            "modified": "2024-03-09T23:53:05.237Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViZGUzOTIzOGY5NDRhMjRjYzg2OTYiLCJpYXQiOjE3MTAwMjc5NTYsImV4cCI6MTcxMDAzMTU1Nn0.5g-XyfpxbQoIP6GNfH8YM7UPYPWpGXiJo09eNVMnmU0"
+                }
+            ],
+            "params": [],
+            "reqType": "get",
+            "tests": []
+        },
+        {
+            "_id": "a1659dea-77d7-4776-8dfc-926c0bd83955",
+            "colId": "58da609d-27ac-447a-b145-41895c932aaf",
+            "containerId": "",
+            "name": "bestSelling",
+            "url": "http://localhost:3000/onlineShop/v1/products/bestSelling",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2024-03-09T19:38:29.831Z",
+            "modified": "2024-03-09T21:51:23.958Z",
+            "headers": [],
+            "params": [],
+            "reqType": "get",
             "tests": []
         }
     ]

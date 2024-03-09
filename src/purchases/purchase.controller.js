@@ -10,6 +10,16 @@ export const shoppingCart = async (req =request, res = response) => {
     const user = await User.findOne({_id: id});
     const product = await Product.findOne({productName});
 
+    if(!product){
+        return res.status(404).json({ msg: 'Product doesnt exits in the database' });
+    };
+    if(!product.state){
+        return res.status(404).json({ msg: 'Product was removed.' });
+    }; 
+
+    if(quantity>product.stock){
+        return res.status(404).json({ msg: 'The quantity of this product available has been exceeded' });
+    }
 
     if(!user.shopping){
         const amount  = quantity*product.price;

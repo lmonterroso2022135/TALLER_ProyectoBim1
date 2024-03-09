@@ -17,8 +17,8 @@ import { validateJWT } from "../middlewares/validate-jwt.js";
     
     router.post(
         "/", [
-            // validateJWT,
-            // isAdmin,
+            validateJWT,
+            isAdmin,
             check("categoryName", "The username is required").not().isEmpty(),
             check("categoryName").custom(categoryExists),
             check("description", "The username is required").not().isEmpty(),
@@ -40,7 +40,9 @@ import { validateJWT } from "../middlewares/validate-jwt.js";
 
     router.delete(
         "/",
-        [
+        [   
+            validateJWT,
+            isAdmin,
             check("categoryName", "Category to remove is required").not().isEmpty()
         ], categoryDelete
     )

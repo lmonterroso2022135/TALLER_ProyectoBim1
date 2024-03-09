@@ -65,18 +65,24 @@ export const userPutLog = async (req, res = response) => {
 }
 // Editar usuario
 export const userPut = async (req, res = response) => {
-    const {id} = req.params;
     const { _id, password, email, ...resto } = req.body;
-    const userId = await User.findById({id});
+
+    const Iduser = await User.findOne({email});
+
+    if(!Iduser){
+        return res.status(404).json({ msg: 'User doesnt exist in the databse' });
+    }
+    if(!Iduser.state){
+        return res.status(404).json({ msg: 'User was desactivated'});
+    }
 
     if(password){
         const salt = bcryptjs.genSaltSync();
         resto.password = bcryptjs.hashSync(password, salt);
     }
-    if(!userId){
-        return res.status(404).json({ msg: 'User doesnt exists in the database.' });
-    }
-    const user = await User.findByIdAndUpdate(id, resto);
+
+    const user = await User.findByIdAndUpdate(Iduser._id, resto);
+
     res.status(200).json({
         msg: 'Profile actualized',
         user
@@ -85,10 +91,10 @@ export const userPut = async (req, res = response) => {
 
 // Eliminar perfil
 export const userDeleteLog = async (req, res) => {
-    const {id} = req.user;
+    const {_id} = req.user;
     const { password } = req.body;
 
-    const user = await User.findById(id);
+    const user = await User.findById(_id);
 
     const validatePassword = bcryptjs.compareSync(password, user.password);
     if (!validatePassword) {
@@ -106,13 +112,18 @@ export const userDeleteLog = async (req, res) => {
     });
 }
 export const userDelete = async (req, res) => {
-    const {id} = req.params;
-    const user = await User.findByIdAndUpdate(id, {state: false});
-    const userId = await User.findById({id});
+    const {email} = req.body;
 
-    if(!userId){
-        return res.status(404).json({ msg: 'User doesnt exists in the database.' });
+    const Iduser = await User.findOne({email});
+
+    if(!Iduser){
+        return res.status(404).json({ msg: 'User doesnt exist in the databse' });
     }
+    if(!Iduser.state){
+        return res.status(404).json({ msg: 'User was desactivated'});
+    }
+
+    const user = await User.findByIdAndUpdate(Iduser._id, {state: false});
 
     res.status(200).json({
         msg: 'Profile desactivated',
