@@ -46,10 +46,8 @@ export const register = async (req, res) => {
     });
 }
 
-
-
-// Editar usuario
-export const userPut = async (req, res = response) => {
+// Editar usuario LOGUEADO
+export const userPutLog = async (req, res = response) => {
     const {id} = req.user;
     const { _id, password, email, ...resto } = req.body;
 
@@ -65,16 +63,59 @@ export const userPut = async (req, res = response) => {
         user
     });
 }
+// Editar usuario
+export const userPut = async (req, res = response) => {
+    const {id} = req.params;
+    const { _id, password, email, ...resto } = req.body;
+    const userId = await User.findById({id});
+
+    if(password){
+        const salt = bcryptjs.genSaltSync();
+        resto.password = bcryptjs.hashSync(password, salt);
+    }
+    if(!userId){
+        return res.status(404).json({ msg: 'User doesnt exists in the database.' });
+    }
+    const user = await User.findByIdAndUpdate(id, resto);
+    res.status(200).json({
+        msg: 'Profile actualized',
+        user
+    });
+}
 
 // Eliminar perfil
-export const userDelete = async (req, res) => {
+export const userDeleteLog = async (req, res) => {
     const {id} = req.user;
+    const { password } = req.body;
+
+    const user = await User.findById(id);
+
+    const validatePassword = bcryptjs.compareSync(password, user.password);
+    if (!validatePassword) {
+        return res.status(400).json({
+            msg: "Incorrect password",
+        });
+    }
+  
+    user.state = false;
+    
+    await user.save();
+    res.status(200).json({
+        msg: 'Profile desactivated',
+        user,
+    });
+}
+export const userDelete = async (req, res) => {
+    const {id} = req.params;
     const user = await User.findByIdAndUpdate(id, {state: false});
-    const userAut = req.user;
+    const userId = await User.findById({id});
+
+    if(!userId){
+        return res.status(404).json({ msg: 'User doesnt exists in the database.' });
+    }
 
     res.status(200).json({
         msg: 'Profile desactivated',
         user,
-        userAut
     });
 }

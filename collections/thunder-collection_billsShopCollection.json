@@ -1,0 +1,28 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "billsShopCollection",
+    "dateExported": "2024-03-09T06:02:08.712Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ef8a9539-e494-48a4-b0cc-1656efa32817",
+            "colId": "6c50b5d4-14c3-42b2-b4f7-70d931ce525b",
+            "containerId": "",
+            "name": "generateBill",
+            "url": "http://localhost:3000/onlineShop/v1/bills",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-09T04:49:18.473Z",
+            "modified": "2024-03-09T05:03:06.354Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViZGU5MjIzOGY5NDRhMjRjYzg2OWQiLCJpYXQiOjE3MDk5NjA1NTYsImV4cCI6MTcwOTk2NDE1Nn0.u-Mz9ezQyNgKiqiWU-8UjmDSAkV5H6ZTH6mKcWrEjjY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
