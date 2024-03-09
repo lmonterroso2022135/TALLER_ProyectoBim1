@@ -5,6 +5,8 @@ import {
     usersGet, 
     userPut,
     userDelete,
+    userPutLog,
+    userDeleteLog,
     register
     } from "./user.controller.js";
 import { validateJWT } from "../middlewares/validate-jwt.js";
@@ -38,17 +40,33 @@ router.post(
 )
 
 router.put(
-    "/",[
+    "/:id",[
         validateJWT,
         check("name", "The name is required").not().isEmpty(),
         check("role", "The role is required.").not().isEmpty(),
     ],userPut
 );
 
+router.put(
+    "/my/",[
+        validateJWT,
+        check("name", "The name is required").not().isEmpty()
+    ],userPutLog
+);
+
 router.delete(
-    "/",
+    "/:id",
     validateJWT,
     userDelete
+);
+
+router.delete(
+    "/my",
+    [
+        validateJWT,
+        check("password", "Password id required").not().isEmpty()
+    ],
+    userDeleteLog
 );
 
 export default router;

@@ -13,7 +13,7 @@ export const shoppingCart = async (req =request, res = response) => {
 
     if(!user.shopping){
         const amount  = quantity*product.price;
-        const total = amount;
+        const subtotal = amount;
 
         const purchase = new Purchase({
             products: [{
@@ -22,7 +22,7 @@ export const shoppingCart = async (req =request, res = response) => {
                 quantity: quantity,
                 amount
             }],
-            total,
+            subtotal,
             user: user._id
         })
 
@@ -63,7 +63,7 @@ export const shoppingCart = async (req =request, res = response) => {
         product.sales = product.sales + quantity;
         await product.save();
 
-        purchase.total = sumaMontos;
+        purchase.subtotal = totalAmonts;
         await purchase.save();
 
         res.status(200).json({ 

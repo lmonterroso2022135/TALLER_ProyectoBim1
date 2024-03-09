@@ -16,7 +16,7 @@ const purchaseSchema = mongoose.Schema({
             type: Number
         }
     }],
-    total: {
+    subtotal: {
         type: Number,
         default: 0
     },

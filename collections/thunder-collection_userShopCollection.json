@@ -1,0 +1,93 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "userShopCollection",
+    "dateExported": "2024-03-09T06:02:43.450Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "903d1268-28c2-423b-816a-8cc29d826e31",
+            "colId": "f282c20e-eef2-48ab-a7a6-9fed77d5160d",
+            "containerId": "",
+            "name": "userPost",
+            "url": "http://localhost:3000/onlineShop/v1/users",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-03-07T15:23:56.337Z",
+            "modified": "2024-03-08T10:57:37.785Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Luis Monterroso\",\n  \"phone\": \"50110425\",\n  \"address\": \"asdasfsa\",\n  \"email\": \"lmonterroso@gmail.com\",\n  \"password\": \"123456\",\n  \"role\": \"ADMIN\"\n}",
+                "form": []
+            },
+            "reqType": "post",
+            "tests": []
+        },
+        {
+            "_id": "35798166-372b-4731-a0a2-01a3694129f0",
+            "colId": "f282c20e-eef2-48ab-a7a6-9fed77d5160d",
+            "containerId": "",
+            "name": "usersGet",
+            "url": "http://localhost:3000/onlineShop/v1/users",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-03-07T15:34:19.951Z",
+            "modified": "2024-03-07T15:34:31.837Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2b48d3b0-93f5-47a3-9c29-cba95c29fde4",
+            "colId": "f282c20e-eef2-48ab-a7a6-9fed77d5160d",
+            "containerId": "",
+            "name": "userPut",
+            "url": "http://localhost:3000/onlineShop/v1/users",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-03-07T15:34:48.361Z",
+            "modified": "2024-03-07T15:43:38.191Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWU5ZGNhODMzNmEwYjc5NmJkNjM5MTUiLCJpYXQiOjE3MDk4MjYxODQsImV4cCI6MTcwOTgyOTc4NH0.Bxbr8KnxLaiqUa4I3YFzqxe9yPQpKpwMoqC6sSAq8_A"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"role\": \"ADMIN\"\n}",
+                "form": []
+            },
+            "reqType": "put",
+            "tests": []
+        },
+        {
+            "_id": "d4344058-919c-4e9c-8fca-e65b8c044c02",
+            "colId": "f282c20e-eef2-48ab-a7a6-9fed77d5160d",
+            "containerId": "",
+            "name": "userDelete",
+            "url": "http://localhost:3000/onlineShop/v1/users/my",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-03-07T15:35:50.177Z",
+            "modified": "2024-03-09T05:55:13.314Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWViZjhhNmUwZWNhODJmNzQ2MzUwODIiLCJpYXQiOjE3MDk5NjM0MzcsImV4cCI6MTcwOTk2NzAzN30.p94HSzJZl0mUne4hcUOzFhZb1RP_EaZ-QbprD883P1g"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "reqType": "del",
+            "tests": []
+        }
+    ]
+}
